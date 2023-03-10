@@ -1,21 +1,21 @@
 function hashInt(input) {
-  let i = 0
   let int = 1
-  const digits = []
-  while (input != 0) {
-    let remainderDivision = input % 10
+  let remainderDivision
 
-    input = Math.trunc(input / 10)
-    digits[i] = remainderDivision
+  while (input !== 0) {
+    remainderDivision = input % 10
+
+    // console.log('input==>', input)
+    // console.log('remainderDivision==>', remainderDivision)
+    // console.log('division==>', input / 10)
 
     if (remainderDivision !== 0) {
       int *= remainderDivision
     }
 
-    i++
+    input = Math.trunc(input / 10)
   }
 
-  console.log(digits)
   console.log(int)
   return int
 }
