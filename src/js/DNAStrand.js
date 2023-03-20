@@ -1,22 +1,14 @@
+const pairs = {
+  A: 'T',
+  T: 'A',
+  C: 'G',
+  G: 'C',
+}
+
 function DNAStrand(dna) {
   let complementaryStrand = ''
   for (let i = 0; i < dna.length; i++) {
-    switch (dna[i]) {
-      case 'A':
-        complementaryStrand += 'T'
-        break
-      case 'T':
-        complementaryStrand += 'A'
-        break
-      case 'C':
-        complementaryStrand += 'G'
-        break
-      case 'G':
-        complementaryStrand += 'C'
-        break
-      default:
-        return null
-    }
+    complementaryStrand += pairs[dna[i]]
   }
 
   console.log(complementaryStrand)
