@@ -1,14 +1,13 @@
-// "exec": "npx node ./src/js/index.js"
-// import { decodeMorse } from './decodeMorse.js'
 function queueTime(customers, n) {
   const registers = new Array(n).fill(0)
 
   for (let waitTime of customers) {
     // находим кассу с минимальным временем ожидания
     const minWaitTime = registers.indexOf(Math.min(...registers))
-
+    // console.log(minWaitTime)
     // добавляем время клиента к этой кассе
     registers[minWaitTime] += waitTime
+    // console.log([...registers])
   }
 
   return Math.max(...registers)
