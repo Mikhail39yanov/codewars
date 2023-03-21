@@ -1,36 +1,36 @@
-function letterAccum(symbol, index) {
-  let i = 0
+function accum(s) {
+  const stringLower = s.toLowerCase()
+  let stringAccum = ''
+
+  for (let i = 0; i < stringLower.length; i++) {
+    const letter = stringLower[i]
+
+    const accumRepeat = letterRepeat(letter, i + 1)
+
+    if (i === stringLower.length - 1) {
+      stringAccum += accumRepeat
+      break
+    }
+
+    stringAccum += accumRepeat + '-'
+  }
+
+  // console.log(stringAccum)
+  return stringAccum
+}
+
+function letterRepeat(symbol, counter) {
   let ac = ''
 
-  while (i < index) {
+  while (counter > 0) {
     ac += symbol
-    i++
+    counter--
   }
 
   return ac[0].toUpperCase() + ac.substring(1)
 }
 
-function accum(s) {
-  const stringLower = s.toLowerCase()
-  let stringAccum = ''
-
-  for (let i = 1; i < stringLower.length + 1; i++) {
-    const letter = stringLower[i - 1]
-    const accum = letterAccum(letter, i)
-
-    if (stringLower.length + 1 === i + 1) {
-      stringAccum += accum
-      continue
-    }
-
-    stringAccum += accum + '-'
-  }
-
-  console.log(stringAccum)
-  return stringAccum
-}
-
-accum('abcd') // -> "A-Bb-Ccc-Dddd"
+// accum('abcd') // -> "A-Bb-Ccc-Dddd"
 // accum('RqaEzty') // -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
 // accum('cwAt') // -> "C-Ww-Aaa-Tttt"
 // accum('ZpglnRxqenU') // -> "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu"
